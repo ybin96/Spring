@@ -1,16 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>∞Ì∞¥¡§∫∏</h2>
+	<h2>Í≥†Í∞ùÏ†ïÎ≥¥</h2>
 	<hr>
+	<a href="insertCustomer">Í≥†Í∞ùÎì±Î°ù</a>
+	<br>
 	<ul>
 		<c:forEach var="c" items="${list }">
 			<li><a href="detailCustomer?custid=${c.custid }">${c.name }</a></li>

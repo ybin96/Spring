@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.example.demo.vo.CustomerVO;
+import com.example.demo.vo.GoodsVO;
 
 public class DBManager {
 	public static SqlSessionFactory sqlSessionFactory;
@@ -21,39 +21,40 @@ public class DBManager {
 			System.out.println("예외발생:"+e.getMessage());
 		}
 	}
-	
-	public static List<CustomerVO> findAll(){
+	public static List<GoodsVO> findAll(){
 		SqlSession session = sqlSessionFactory.openSession();
-		List<CustomerVO> list = session.selectList("customer.findAll");
+		List<GoodsVO> list = session.selectList("goods.findAll");
 		session.close();
 		return list;
 	}
 	
-	public static CustomerVO findCustid(int custid){
+	public static GoodsVO findNo(int no) {
 		SqlSession session = sqlSessionFactory.openSession();
-		CustomerVO vo = session.selectOne("customer.findCustid",custid);
+		GoodsVO g = session.selectOne("goods.findNo",no);
 		session.close();
-		return vo;
+		return g;
 	}
-
-	public static int insert(CustomerVO c) {
+	
+	public static int insert(GoodsVO g) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int re = session.insert("customer.insert", c);
+		int re = session.insert("goods.insert", g);
 		session.commit();
 		session.close();
 		return re;
 	}
-
-	public static int update(CustomerVO c) {
-		SqlSession session = sqlSessionFactory.openSession(true);
-		int re = session.update("customer.update", c);
+	
+	public static int update(GoodsVO g) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int re = session.update("goods.update", g);
+		session.commit();
 		session.close();
 		return re;
-	}	
+	}
 	
-	public static int delete(int custid) {
-		SqlSession session = sqlSessionFactory.openSession(true);
-		int re = session.delete("customer.delete", custid);
+	public static int delete(int no) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int re = session.delete("goods.delete", no);
+		session.commit();
 		session.close();
 		return re;
 	}

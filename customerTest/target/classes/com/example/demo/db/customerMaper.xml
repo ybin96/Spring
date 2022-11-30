@@ -9,4 +9,13 @@
   <select id="findCustid" resultType="customerVO">
     select * from customer where custid = #{custid}
   </select>
+  <select id="insert" parameterType="customerVO">
+    insert into customer(custid,name,address,phone) values(#{custid},#{name},#{address},#{phone})
+  </select>
+  <select id="update" parameterType="customerVO">
+    update customer set name=#{name},address=#{address},phone=#{phone} where custid=#{custid}
+  </select>
+  <delete id="delete">
+    delete customer where custid=#{custid}
+  </delete>
 </mapper>

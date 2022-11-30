@@ -17,5 +17,17 @@ public class CustomerDAO {
 	public CustomerVO findCustid(int custid) {
 		return DBManager.findCustid(custid);
 	}
+
+	public int insert(CustomerVO c) {
+		return DBManager.insert(c);
+	}
+
+	public int update(CustomerVO c) {
+		return DBManager.update(c);
+	}
+	
+	public int delete(int custid) {
+		return DBManager.delete(custid);
+	}
 }
 
