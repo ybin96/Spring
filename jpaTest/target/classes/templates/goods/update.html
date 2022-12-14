@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>상품수정</h2>
+	<hr>
+	<form action="/goods/save" method="post">
+		상품번호 : <input type="hidden" name="no" th:value="${g.no}"><br>
+		상품이름 : <input type="text" name="name" th:value="${g.name}"><br>
+		상품가격 : <input type="number" name="price" th:value="${g.price}"><br>
+		상품수량 : <input type="number" name="qty" th:value="${g.qty}"><br>
+		파일이름 : <input type="text" name="fname" th:value="${g.fname}"><br>
+		<input type="submit" value="수정">
+		<input type="reset" value="다시입력">
+	</form>
+</body>
+</html>
