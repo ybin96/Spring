@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+			
+	<h2>주문목록</h2>
+	<hr>
+	
+	<form action="/orders/list2">
+		<select name="search_column">
+			<option value="name">고객명</option>
+			<option value="bookname">도서명</option>
+		</select> : <input type="search" name="keyword">
+		<input type="submit" value="검색">
+	</form><br>
+	
+	<table border="1" width="80%">
+		<tr>
+			<td><a th:text="주문번호" th:href="@{/orders/list2(sort_colum=orderid)}"></a></td>
+			<td><a th:text="도서명" th:href="@{/orders/list2(sort_colum=bookname)}"></a></td>
+			<td><a th:text="고객명" th:href="@{/orders/list2(sort_colum=name)}"></a></td>
+			<td><a th:text="주문가격" th:href="@{/orders/list2(sort_colum=saleprice)}"></a></td>
+			<td><a th:text="도서가격" th:href="@{/orders/list2(sort_colum=price)}"></a></td>
+			<td><a th:text="주문일" th:href="@{/orders/list2(sort_colum=orderdate)}"></a></td>
+		</tr>
+		
+		<tr th:each="o:${list}">
+			<td th:text="${o.orderid}"></td>
+			<td th:text="${o.bookname}"></td>
+			<td th:text="${o.name}"></td>
+			<td th:text="${o.saleprice}"></td>
+			<td th:text="${o.price}"></td>
+			<td th:text="${o.orderdate}"></td>
+		</tr>
+	</table>
+</body>
+</html>
