@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>게시물 상세</h2>
+	<hr>
+	글번호 : <span th:text="${b.no}"></span><br>
+	작성자 : <span th:text="${b.writer}"></span><br>
+	글제목 : <span th:text="${b.title}"></span><br>
+	등록일 : <span th:text="${b.regdate}"></span><br>
+	조회수 : <span th:text="${b.hit}"></span><br>
+	글내용 : <br>
+	<textarea rows="10" cols="80" readonly="readonly" th:value="${b.content}" th:text="${b.content}"></textarea><br>
+	ip주소 : <span th:text="${b.ip}"></span><br>
+	업로드 파일 : <span th:text="${b.fname}"></span><br>
+	<img th:src="@{'/images/'+${b.fname}}">
+		
+	<hr>
+	<a th:href="@{'/board/insert/'+${b.no}}" th:text="답글작성"></a>
+</body>
+</html>
