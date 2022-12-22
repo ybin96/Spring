@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"/newBook",
+			success:function(arr){
+				$.each(arr,function(){
+					var li = $("<li></li>");
+					var a = $("<a></a>").html(this.title).attr("href","http://www.hanb.co.kr"+this.link);
+					$(li).append(a);
+					$("#list").append(li);
+				});
+			}
+		});
+	})
+</script>
+</head>
+<body>
+	<h2>새로운 도서 정보</h2>
+	<hr>
+	<ul id="list"></ul>
+</body>
+</html>
