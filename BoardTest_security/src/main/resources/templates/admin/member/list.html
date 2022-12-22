@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>회원관리</h2>
+	<hr>
+	<button type="button" onclick="location.href='/admin/member/insert'">등록</button>
+	<table border="1" width="60%">
+		<tr>
+			<th>이름</th>
+			<th>아이디</th>
+			<th>Role</th>
+			<th>Action</th>
+		<tr th:each="m:${list}">
+			<td th:text="${m.name}"></td>
+			<td th:text="${m.id}"></td>
+			<td th:text="${m.role}"></td>
+			<td>
+				<a th:href="@{'/admin/member/update/'+${m.id}}">수정</a>&nbsp;
+				<a th:href="@{'/admin/member/delete/'+${m.id}}">삭제</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
