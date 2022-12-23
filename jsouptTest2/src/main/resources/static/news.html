@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$(".btnSearch").click(function(){
+			var sort = $(this).attr("sort");
+			var search = $("#search").val();
+			var data = {search:search, sort:sort};
+			$.ajax({
+				url:"/shop",
+				data:data,
+				success:function(result){
+					$("#price").html(result.price);
+					$("#item").html(result.item);
+					$("#shop_url").attr("href", result.link);
+				}
+			})
+		});
+		
+		$.ajax({
+			url:"/news",
+			success:function(arr){
+				$.each(arr,function(){
+					var li = $("<li></li>");
+					var a = $("<a></a>").html(this.title).attr("href",this.link);
+					$(li).append(a);
+					$("#list").append(li);
+				});
+			}
+		});
+		
+	});
+</script>
+</head>
+<body>
+	검색어 : <input type="search" id="search"> 
+	<button class="btnSearch" sort="asc">최저가 검색</button>
+	<button class="btnSearch" sort="dsc">최고가 검색</button>
+	<br>
+	가격 : <span id="price"></span><br>
+	상품명 : <span id="item"></span><br>
+	<a id="shop_url" href="#">쇼핑몰로 이동하기</a>
+	<hr>
+	<h2>news</h2>
+	<hr>
+	<ul id="list"></ul>
+</body>
+</html>
