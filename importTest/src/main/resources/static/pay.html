@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 	<!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+  
+  <script type="text/javascript">
+  
+  	$(function(){
+  	  var IMP = window.IMP; // 생략 가능
+  	  IMP.init("imp11287137"); // 예: imp00000000  	 
+  	  
+  	  $("#btnOK").click(function(){
+  		  
+  		// IMP.request_pay(param, callback) 결제창 호출
+  	      IMP.request_pay({ // param
+  	          pg: "kcp",
+  	          pay_method: "card",
+  	          merchant_uid: "ORD"+new Date().getTime(),
+  	          name: "축구공",
+  	          amount: 100,
+  	          buyer_email: "samuel9634@naver.com",
+  	          buyer_name: "홍길동",
+  	          buyer_tel: "010-4242-4242",
+  	          buyer_addr: "서울특별시 강남구 신사동",
+  	          buyer_postcode: "01181"
+  	      }, function (res) { // callback
+  	          if (res.success) {	             
+  	             console.log("결재완료");
+  	             console.log("고유ID:"+res.imp_uid);
+  	             console.log("상점거래 ID:"+res.merchant_uid);
+  	             console.log("결재금액:"+res.paid_amount);
+  	             console.log("카드 승인번호:"+res.apply_num);
+  	             $("#imp_uid").val(res.imp_uid);
+  	             $("#merchant_uid").val(res.merchant_uid);
+  	             $("#paid_amount").val(res.paid_amount);
+  	             $("#apply_num").val(res.apply_num);  	
+  	             
+  	 			 $("#pay").submit();
+  	          } else {	        	  
+  	        	  console.log("결재실패"); 
+  	        	  console.log('에러내용'+res.error_msg);
+  	          }
+  	      });
+  	  });	  
+  	 
+  	});
+  </script>
+</head>
+<body>
+	 <button id="btnOK">결제하기</button>
+	 <hr>
+	 <form action="/payok" method="post" id="pay">
+	 	<input type="hidden" name="imp_uid" id="imp_uid">
+	 	<input type="hidden" name="merchant_uid" id="merchant_uid">
+	 	<input type="hidden" name="paid_amount" id="paid_amount">
+	 	<input type="hidden" name="apply_num" id="apply_num">	 	
+	 </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
