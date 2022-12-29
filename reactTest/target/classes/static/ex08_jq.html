@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+		setInterval(showClock,1000)
+		
+		function showClock(){
+			const d = new Date()
+			const h = d.getHours()
+			const m = d.getMinutes()
+			const s = d.getSeconds()
+			
+			const div = $("<div></div>").html(h+":"+m+":"+s);
+			$("#root").html(div);
+		}
+  	});
+  </script>
+  </head>
+  <body>
+	<div id="root"></div>
+
+  </body>
+</html>

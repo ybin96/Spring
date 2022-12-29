@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+	<div id="root"></div>
+	<script type="text/babel">
+		const item = "SD 카드";
+		const value = 12000;
+		const msg = <h1>{item} - {value}원</h1>;
+		
+		const elm = document.getElementById("root");
+		ReactDOM.render(msg,elm);
+	</script>
+
+  </body>
+</html>

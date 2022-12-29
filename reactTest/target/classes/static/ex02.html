@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+	<div id="disp"></div>
+	<script type="text/babel">
+		const root = document.querySelector("#disp");
+		const msg = getGreeting();
+		ReactDOM.render(msg,disp);
+		
+		function getGreeting(){
+			const r = Math.floor(Math.random() *3);
+			if(r == 0) return <p>today good</p>;
+			if(r == 1) return <p>last day</p>;
+			if(r == 2) return <p>happy new year</p>;
+		};
+	</script>
+
+  </body>
+</html>

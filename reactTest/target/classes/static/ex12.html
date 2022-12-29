@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+	<div id="root"></div>
+	<script type="text/babel">
+		function photoText(props){
+			const boxStyle = {
+				border:"1px solid siver",
+				margin:"8px",
+				padding:"4px"
+			}
+
+			return (
+				<div style={boxStyle}>
+					<img src={props.fname} width="100"/>
+					<span>{props.label}</span>
+				</div>
+			)
+		}
+
+		const dom = <div>
+						<PhotoText fname="/images/aa.jpg" text="hi"/>
+						<PhotoText fname="bb.jpg" label="hi"/>
+						<PhotoText fname="cc.jpg" label="hi"/>
+					</div>
+
+		ReactDOM.render(dom,document.getElementById("root"))
+	</script>
+
+  </body>
+</html>

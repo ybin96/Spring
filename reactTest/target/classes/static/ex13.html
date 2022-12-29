@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+	<div id="root"></div>
+	<script type="text/babel">
+		class RList extends React.Component{
+			render(){
+				const items = this.props.items.split(",")
+				const itemsObj = items.map((e)=>{
+					return <li>{e}</li>
+				})
+				let title = this.props.title
+				if(!title) title = "LIST"
+				return (
+					<div>
+						<h3>{title}</h3>
+						<ul>{itemsObj}</ul>
+					</div>
+				)
+			}
+		}
+
+		ReactDOM.render(
+			<RList title="" items=""/>
+		)
+	</script>
+  </body>
+</html>

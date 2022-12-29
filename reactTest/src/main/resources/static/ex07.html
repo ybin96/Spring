@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+	<div id="root"></div>
+	<script type="text/babel">
+		function getDOM(){
+			const css1 = {"color":"red","background-color":"#f0f0ff","font-size":"2em"}
+			const css2 = {"color":"pink","background-color":"#fff0f0","font-size":"2em"}
+
+			return( 
+				<div>
+				<div><p style={css1}>Good bye Christmas</p></div>
+				<div><p style={css2}>Good bye Christmas</p></div>
+				</div>
+				)
+		}
+	
+		const msg = getDOM()
+		const elm = document.getElementById("root")
+		ReactDOM.render(msg,elm)
+	</script>
+
+  </body>
+</html>
